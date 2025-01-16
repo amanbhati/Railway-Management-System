@@ -15,9 +15,9 @@ A comprehensive Railway Management System designed to simplify and streamline th
 
 ## Technologies Used
 
-- **Frontend:** HTML, CSS, JavaScript
-- **Backend:** Node.js, Express
-- **Database:** MongoDB
+- **Frontend:** Streamlit
+- **Backend:** Python (Flask/Custom API)
+- **Database:** MySQL
 - **Version Control:** Git, GitHub
 
 ---
@@ -28,8 +28,8 @@ Follow these steps to set up the project locally:
 
 ### Prerequisites
 Ensure you have the following installed on your system:
-- [Node.js](https://nodejs.org/) (v14 or later)
-- [MongoDB](https://www.mongodb.com/)
+- [Python](https://www.python.org/) (v3.8 or later)
+- [MySQL](https://www.mysql.com/)
 - [Git](https://git-scm.com/)
 
 ### Steps
@@ -43,38 +43,48 @@ Ensure you have the following installed on your system:
    cd Railway-Management-System
    ```
 
-2. **Install Dependencies**
-   Install the required dependencies using npm:
+2. **Set Up a Virtual Environment**
+   Create and activate a virtual environment:
    ```bash
-   npm install
+   python -m venv venv
+   source venv/bin/activate   # On Windows, use `venv\Scripts\activate`
    ```
 
-3. **Set Up the Database**
-   - Start your MongoDB server.
+3. **Install Dependencies**
+   Install the required Python libraries:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set Up the Database**
+   - Start your MySQL server.
    - Create a new database named `railway_management`.
-   - Update the database connection string in `config/db.js`.
+   - Update the database configuration in the `config.py` file:
+     ```python
+     DB_HOST = "localhost"
+     DB_USER = "your_mysql_username"
+     DB_PASSWORD = "your_mysql_password"
+     DB_NAME = "railway_management"
+     ```
 
-4. **Configure Environment Variables**
-   Create a `.env` file in the root directory and add the following variables:
-   ```env
-   PORT=3000
-   MONGO_URI=<Your MongoDB connection string>
-   JWT_SECRET=<Your secret key>
-   ```
+   - Import the database schema:
+     ```bash
+     mysql -u <username> -p < railway_management.sql
+     ```
 
 5. **Run the Application**
-   Start the development server:
+   Start the Streamlit application:
    ```bash
-   npm start
+   streamlit run app.py
    ```
-   The application will be accessible at `http://localhost:3000`.
+   The application will be accessible at `http://localhost:8501`.
 
 ---
 
 ## Usage
 
 1. **Access the System:**
-   - Open your browser and navigate to `http://localhost:3000`.
+   - Open your browser and navigate to `http://localhost:8501`.
 
 2. **User Operations:**
    - Register or log in to access user functionalities.
@@ -83,12 +93,6 @@ Ensure you have the following installed on your system:
 3. **Admin Operations:**
    - Log in as an admin to access the dashboard.
    - Manage train schedules and passenger details.
-
----
-
-## Screenshots
-
-(Add screenshots here to showcase the interface and functionalities.)
 
 ---
 
@@ -125,4 +129,4 @@ For any inquiries or support, please contact:
 
 **Aman Kumar Bhati**  
 [GitHub Profile](https://github.com/amanbhati)  
-
+Email: amanb9154@gmail.com
